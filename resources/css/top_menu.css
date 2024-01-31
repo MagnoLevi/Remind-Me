@@ -1,0 +1,58 @@
+.navbar {
+    background: linear-gradient(25deg, var(--main-2)0%, var(--main-2)55%, var(--main-1) 55%, var(--main-1) 100%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: #fff;
+    padding: 10px 5px !important;
+}
+
+.logo {
+    font-size: 36px;
+    color: #fff;
+    background: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-right: 2px solid var(--main-1);
+    padding-right: 10px;
+}
+
+.logo:hover {
+    color: var(--yellow-2);
+}
+
+.logout_top_menu:hover {
+    color: var(--yellow-2);
+}
+
+
+.top-link {
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    transition: 0.15s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}
+
+.top-link:hover {
+    padding: 0px 40px;
+    font-weight: 600;
+    color: var(--yellow-2);
+    letter-spacing: 2px;
+    font-size: 22px;
+}
+
+.top-link-selected {
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    transition: 0.15s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--yellow-1);
+
+    pointer-events: none;
+    cursor: default;
+}
