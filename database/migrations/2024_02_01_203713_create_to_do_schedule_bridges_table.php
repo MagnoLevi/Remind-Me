@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('to_do_monthlies', function (Blueprint $table) {
+        Schema::create('to_do_schedule_bridges', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('schedule_id')->index('schedule_id')->comment('Id of the schedule');
+            $table->foreign('schedule_id')->references('id')->on('schedules')->onDelete('cascade');
             $table->unsignedBigInteger('to_do_id')->index('to_do_id')->comment('Id of the to do');
             $table->foreign('to_do_id')->references('id')->on('to_dos')->onDelete('cascade');
-            $table->integer("day_of_month")->comment("Day of of the to do");
-            $table->time("time")->comment("To do time");
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('to_do_monthlies');
+        Schema::dropIfExists('to_do_schedule_bridges');
     }
 };

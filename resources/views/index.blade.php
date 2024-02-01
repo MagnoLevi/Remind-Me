@@ -8,7 +8,13 @@
 
     <body>
         @include('layout.top_menu')
-        {{ Auth::user() }}
+
+        <main>
+            <div class="mx-5">
+                @include('schedule')
+            </div>
+        </main>
+
     </body>
 @endsection
 

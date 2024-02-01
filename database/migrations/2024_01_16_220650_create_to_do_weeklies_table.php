@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('to_do_weeklies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('to_do_id')->index('user_id')->comment('Id of the to do');
+            $table->unsignedBigInteger('to_do_id')->index('to_do_id')->comment('Id of the to do');
             $table->foreign('to_do_id')->references('id')->on('to_dos')->onDelete('cascade');
             $table->integer("weekday")->comment("Day of the week of the to do");
             $table->time("time")->comment("To do time");
