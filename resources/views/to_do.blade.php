@@ -14,7 +14,7 @@
                 {{-- TO DO DIV --}}
                 <div class="col-6 border-end pe-4">
                     <div class="d-flex align-items-end">
-                        <h4>To Do</h4>
+                        <h4>To Dos</h4>
 
                         <button id="btn_open_modal_add_to_do" class="btn btn-main ms-3">
                             <i class="fa-solid fa-plus"></i> New

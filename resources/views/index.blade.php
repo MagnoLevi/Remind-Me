@@ -10,9 +10,7 @@
         @include('layout.top_menu')
 
         <main>
-            <div class="mx-5">
-                @include('schedule')
-            </div>
+            asd
         </main>
 
     </body>

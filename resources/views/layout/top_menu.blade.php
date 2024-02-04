@@ -12,22 +12,20 @@
             </div>
 
             @if (Auth::user())
-                <a class="{{ $nav == 'agenda' ? 'top-link-selected' : 'top-link' }} ms-3"
-                    href="{{ url('') }}">Agenda</a>
-                <a class="{{ $nav == 'to_do' ? 'top-link-selected' : 'top-link' }}" href="{{ url('to-do') }}">To do</a>
+                <a class="{{ $nav == 'to_do' ? 'top-link-selected' : 'top-link' }} ms-3" href="{{ url('to-do') }}">To do</a>
             @endif
         </div>
 
         <div>
             @if (Auth::user())
-                <a class="h4 logout_top_menu" href="{{ route('login.logout') }}">
+                <a class="h4 log-in-out-top-menu" href="{{ route('login.logout') }}">
                     <i class="fa-solid fa-door-closed mr-2"></i>
                     Log Out
                 </a>
             @endif
 
             @if (Auth::guest() && !request()->is('login'))
-                <a class="h4 logout_top_menu" href="{{ url('login') }}">
+                <a class="h4 log-in-out-top-menu" href="{{ url('login') }}">
                     <i class="fa-solid fa-door-open mr-2"></i>
                     Log In
                 </a>
