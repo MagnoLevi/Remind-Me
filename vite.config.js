@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/css/login.css',
 
                 'resources/js/app.js',
+                'resources/js/remind_me/index.js',
                 'resources/js/remind_me/top_menu.js',
                 'resources/js/remind_me/login.js',
                 'resources/js/remind_me/to_do.js',

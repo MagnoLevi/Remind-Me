@@ -12,18 +12,18 @@
         <main>
             <div class="row justify-content-between">
                 {{-- TO DO DIV --}}
-                <div class="col-6 border-end pe-4">
+                <div class="col-6 pe-4 border-end">
                     <div class="d-flex align-items-end">
-                        <h4>To Do</h4>
+                        <h4>To Dos</h4>
 
-                        <button id="btn_open_modal_add_to_do" class="btn btn-main ms-3">
+                        <button id="btn_open_modal_add_to_do" class="btn btn-main ms-2">
                             <i class="fa-solid fa-plus"></i> New
                         </button>
                     </div>
 
                     <div class="mt-2" style="overflow-y: auto; max-height: 60vh;">
                         <table class="table table-sm table-striped table-hover">
-                            <thead class="shadow-sm text-nowrap" style="position: sticky; top: 0px;">
+                            <thead class="sticky-top shadow-sm text-nowrap">
                                 <tr>
                                     <th>Description</th>
                                     <th class="text-center">Due date</th>
@@ -41,14 +41,14 @@
                     <div class="d-flex align-items-end">
                         <h4>Recurring Tasks</h4>
 
-                        <button id="btn_open_modal_add_task" class="btn btn-main ms-3">
+                        <button id="btn_open_modal_add_task" class="btn btn-main ms-2">
                             <i class="fa-solid fa-plus"></i> New
                         </button>
                     </div>
 
                     <div class="mt-2" style="overflow-y: auto; max-height: 60vh;">
                         <table class="table table-sm table-striped table-hover">
-                            <thead class="shadow-sm text-nowrap" style="position: sticky; top: 0px;">
+                            <thead class="sticky-top shadow-sm text-nowrap">
                                 <tr>
                                     <th>Description</th>
                                     <th class="text-center">Type</th>
@@ -93,7 +93,7 @@
                     <div class="modal-footer">
                         <span id="msg_error_modal_add_to" class="text-danger"></span>
 
-                        <button id="save_modal_add_to_do" class="btn btn-main">Save changes</button>
+                        <button id="save_modal_add_to_do" class="btn btn-main">Save Changes</button>
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -179,7 +179,7 @@
                     <div class="modal-footer">
                         <span id="msg_error_modal_add_task" class="text-danger"></span>
 
-                        <button id="save_modal_add_task" class="btn btn-main">Save changes</button>
+                        <button id="save_modal_add_task" class="btn btn-main">Save Changes</button>
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -217,7 +217,7 @@
                     <div class="modal-footer">
                         <span id="msg_error_modal_edit_to" class="text-danger" style="display: none;"></span>
 
-                        <button id="save_modal_edit_to_do" class="btn btn-main">Save changes</button>
+                        <button id="save_modal_edit_to_do" class="btn btn-main">Save Changes</button>
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -305,7 +305,7 @@
                     <div class="modal-footer">
                         <span id="msg_error_modal_edit_task" class="text-danger"></span>
 
-                        <button id="save_modal_edit_task" class="btn btn-main">Save changes</button>
+                        <button id="save_modal_edit_task" class="btn btn-main">Save Changes</button>
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>

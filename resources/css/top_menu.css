@@ -13,15 +13,25 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    border-right: 2px solid var(--main-1);
     padding-right: 10px;
+    transition: 0.15s ease-in-out;
 }
 
 .logo:hover {
-    color: var(--yellow-2);
+    transform: scale(1.05);
 }
 
-.logout_top_menu:hover {
+
+.logo-divider {
+    height: 52px;
+    min-width: 2px;
+    background-color: var(--main-1);
+    border-radius: 180;
+    margin: 0px 10px;
+}
+
+
+.log-in-out-top-menu :hover {
     color: var(--yellow-2);
 }
 
