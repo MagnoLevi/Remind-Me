@@ -38,19 +38,25 @@ class ScheduleController extends Controller
         }
 
 
-        $schedule = new Schedule();
 
         try {
+            if ($request->date > date("Y-m-d")) {
+                return response()->json(['status' => 'error', 'message' => "A future date cannot be selected"]);
+            }
+            
+            $schedule = new Schedule();
             $schedule->user_id = Auth::user()->id;
             $schedule->notes = $request->notes;
             $schedule->date = $request->date;
             $schedule->save();
 
-            foreach ($request->array_to_do as $value) {
-                $scheduleToDo = new ScheduleToDoBridge();
-                $scheduleToDo->schedule_id = $schedule->id;
-                $scheduleToDo->to_do_id = $value;
-                $scheduleToDo->save();
+            if ($request->array_to_do) {
+                foreach ($request->array_to_do as $value) {
+                    $scheduleToDo = new ScheduleToDoBridge();
+                    $scheduleToDo->schedule_id = $schedule->id;
+                    $scheduleToDo->to_do_id = $value;
+                    $scheduleToDo->save();
+                }
             }
 
             DB::commit();

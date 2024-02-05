@@ -84,6 +84,25 @@ class ToDoController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show_available(Request $request)
+    {
+        if (!UserSession::check_session(Auth::user()->id)) {
+            Auth::logout();
+            return response()->json(['status' => 'error', 'message' => "The user session is expired"]);
+        }
+
+        $list = ToDo::show_available(Auth::user()->id);
+
+        if (count($list) <= 0) {
+            return response()->json(['status' => 'null', 'message' => 'No records found']);
+        }
+
+        return response()->json(['status' => 'ok', 'data' => $list]);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
