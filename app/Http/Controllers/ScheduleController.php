@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Schedule;
+use App\Models\ScheduleToDoBridge;
+use App\Models\UserSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
@@ -27,7 +32,41 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!UserSession::check_session(Auth::user()->id)) {
+            Auth::logout();
+            return response()->json(['status' => 'error', 'message' => "The user session is expired"]);
+        }
+
+
+
+        try {
+            if ($request->date > date("Y-m-d")) {
+                return response()->json(['status' => 'error', 'message' => "A future date cannot be selected"]);
+            }
+            
+            $schedule = new Schedule();
+            $schedule->user_id = Auth::user()->id;
+            $schedule->notes = $request->notes;
+            $schedule->date = $request->date;
+            $schedule->save();
+
+            if ($request->array_to_do) {
+                foreach ($request->array_to_do as $value) {
+                    $scheduleToDo = new ScheduleToDoBridge();
+                    $scheduleToDo->schedule_id = $schedule->id;
+                    $scheduleToDo->to_do_id = $value;
+                    $scheduleToDo->save();
+                }
+            }
+
+            DB::commit();
+
+            return response()->json(['status' => 'ok', 'message' => 'Success in recording']);
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return response()->json(['status' => 'error', 'message' => 'Error in recording']);
+        }
     }
 
     /**

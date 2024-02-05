@@ -30,6 +30,27 @@ class ToDo extends Model
         return $query->get()->toArray();
     }
 
+    /**
+     * Get to do of the user
+     * @return array
+     */
+    public static function show_available($user_id)
+    {
+        $query = self::selectRaw("
+            to_dos.id AS to_do_id,
+            to_dos.user_id,
+            to_dos.description,
+            to_dos.due_date,
+            DATE_FORMAT(to_dos.due_date, '%d/%m/%y') AS due_date_format
+        ")
+            ->leftJoin("schedule_to_do_bridges", "schedule_to_do_bridges.to_do_id", "=", "to_dos.id")
+            ->whereRaw("type IS NULL")
+            ->whereRaw("user_id = '$user_id' AND schedule_to_do_bridges.id IS NULL")
+            ->orderByRaw("due_date");
+
+        return $query->get()->toArray();
+    }
+
 
     /**
      * Get user id by uuid_session

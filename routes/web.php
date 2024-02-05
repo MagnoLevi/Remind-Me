@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ToDoController;
 use App\Http\Controllers\ToDoWeeklyController;
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('to-do')->controller(ToDoController::class)->group(function () {
         Route::get('', 'index')->name('to-do.index');
         Route::get('show', 'show')->name('to-do.show');
+        Route::get('show-available', 'show_available')->name('to-do.show-available');
         Route::get('edit/{id}', 'edit')->name('to-do.edit');
         Route::post('store', 'store')->name('to-do.store');
         Route::post('update', 'update')->name('to-do.update');
@@ -55,5 +57,11 @@ Route::middleware('auth')->group(function () {
         Route::post('update', 'update')->name('task.update');
 
         Route::post('weekly/destroy', [App\Http\Controllers\ToDoWeeklyController::class, 'destroy'])->name('task.weekly.destroy');
+    });
+
+    Route::prefix('schedule')->controller(ScheduleController::class)->group(function () {
+        Route::get('show', 'show')->name('task.show');
+        Route::post('store', 'store')->name('task.store');
+        Route::post('destroy', 'destroy')->name('to-do.destroy');
     });
 });
