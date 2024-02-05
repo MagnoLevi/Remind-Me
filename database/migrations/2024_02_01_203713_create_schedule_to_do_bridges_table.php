@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('to_do_schedule_bridges', function (Blueprint $table) {
+        Schema::create('schedule_to_do_bridges', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('schedule_id')->index('schedule_id')->comment('Id of the schedule');
             $table->foreign('schedule_id')->references('id')->on('schedules')->onDelete('cascade');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('to_do_schedule_bridges');
+        Schema::dropIfExists('schedule_to_do_bridges');
     }
 };

@@ -49,6 +49,8 @@ function insert_to_do() {
         },
         dataType: "json",
         success: function (res) {
+            $("#save_modal_add_to_do").prop("disabled", false);
+
             if (res.status == 'error') {
                 $(".input-modal-add-to-do").addClass("is-invalid");
                 $("#msg_error_modal_add_to").html(res.message).show();
@@ -66,10 +68,17 @@ function insert_to_do() {
         },
         error: function (e) {
             console.error("Function: [insert_to_do] File: [to_do.js] Error: ", e.responseText);
+            $("#save_modal_add_to_do").prop("disabled", false);
+
+            $(".input-modal-add-to-do").addClass("is-invalid");
+            $("#msg_error_modal_add_to").html(`Error in recording`).show();
+
+            setTimeout(() => {
+                $(".input-modal-add-to-do").removeClass("is-invalid");
+                $("#msg_error_modal_add_to").fadeOut();
+            }, 2000);
         },
     });
-
-    $("#save_modal_add_to_do").prop("disabled", false);
 }
 
 
@@ -103,10 +112,10 @@ function list_to_do() {
 
             let tbody = "";
 
-            res.data.forEach(r => {
-                tbody += `<tr data-to_do_id="${r.to_do_id}">
-                    <td class="to-do-line align-middle">${r.description}</td>
-                    <td class="to-do-line align-middle text-center">${r.due_date_format}</td>
+            res.data.forEach(e => {
+                tbody += `<tr data-to_do_id="${e.to_do_id}">
+                    <td class="to-do-line align-middle">${e.description}</td>
+                    <td class="to-do-line align-middle text-center">${e.due_date_format}</td>
                     <td class="align-middle text-center trash-to-do" style='cursor: pointer;'>
                         <i class="fa-solid fa-trash-can text-danger"></i>
                     </td>
@@ -377,13 +386,13 @@ function list_recurring_task() {
 
             let tbody = "";
 
-            res.data.forEach(r => {
+            res.data.forEach(e => {
                 tbody += `<tr class='task-line'
-                        data-to_do_id="${r.to_do_id}" data-task_id="${r.task_id}" data-type="${r.type}">
-                    <td class="align-middle">${r.description}</td>
-                    <td class="align-middle text-center">${r.type}</td>
-                    <td class="align-middle text-center">${r.time}</td>
-                    <td class="align-middle text-center">${r.recurring_date}</td>
+                        data-to_do_id="${e.to_do_id}" data-task_id="${e.task_id}" data-type="${e.type}">
+                    <td class="align-middle">${e.description}</td>
+                    <td class="align-middle text-center">${e.type}</td>
+                    <td class="align-middle text-center">${e.time}</td>
+                    <td class="align-middle text-center">${e.recurring_date}</td>
                     <td class="align-middle text-center trash-task" style='cursor: pointer;'>
                         <i class="fa-solid fa-trash-can text-danger"></i>
                     </td>
@@ -527,8 +536,6 @@ function update_task() {
             "weekday": $(this).data("weekday"),
             "time": $(this).val()
         });
-        if ($(this).val() != "") {
-        }
     })
 
     $.ajax({

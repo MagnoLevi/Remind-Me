@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ToDoController;
 use App\Http\Controllers\ToDoWeeklyController;
@@ -55,5 +56,11 @@ Route::middleware('auth')->group(function () {
         Route::post('update', 'update')->name('task.update');
 
         Route::post('weekly/destroy', [App\Http\Controllers\ToDoWeeklyController::class, 'destroy'])->name('task.weekly.destroy');
+    });
+
+    Route::prefix('schedule')->controller(ScheduleController::class)->group(function () {
+        Route::get('show', 'show')->name('task.show');
+        Route::post('store', 'store')->name('task.store');
+        Route::post('destroy', 'destroy')->name('to-do.destroy');
     });
 });
