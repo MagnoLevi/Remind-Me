@@ -61,6 +61,27 @@
                 <div class="d-flex align-items-center justify-content-end">
                     <button id="open_modal_confirm_add_schedule" class="btn btn-main mt-2">Save Changes</button>
                 </div>
+
+                <hr class="mt-5">
+            </div>
+
+
+            {{-- DIV SHOWING UR SCHEDULES --}}
+            <div>
+                <h3>Schedules</h3>
+                <div style="max-height: 60vh; overflow-y: auto;">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Notes</th>
+                                <th class="text-center">Date</th>
+                                <th>To Dos</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tbody_schedule"></tbody>
+                    </table>
+                </div>
             </div>
         </main>
 
